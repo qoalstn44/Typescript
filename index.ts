@@ -163,8 +163,77 @@
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
+// //유니온(Union) 타입 : (A || B)
+// const printOut = (input: string | number) => {
+//   console.log(input);
+// };
+// |//<=이것을 파이프 라고 부른다.유니온 타입은 매개변수의 타입을 두개 이상 받을 수 있다.
+// printOut("문자열");
+// printOut(20);
+// printOut(true);
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//유니온 타입의 장점
+// function getAge(age: number | string) {
+//   if (typeof age === "number") {
+//     //any 타입은 어떤 타입이든 받을 수 있다. age는 any 타입이다.
+//     age.toFixed(); // Error
+//     //왜냐 age는 any 타입이기 때문에 toFixed()를 사용할 수 없다. 그리고 toFixed 소수점을 표현하는 함수이다.
+//     return age;
+//   }
+
+//   if (typeof age === "string") {//age가 string 타입이라면
+//     return age;
+//   }
+// }
+
+// getAge("20");
+// getAge(20);
+
+// function padLeft(value: string, padding: string | number) {
+//   //value는 string 타입이고 padding은 any 타입이다.
+//   if (typeof padding === "number") {
+//     //padding이 number 타입이라면
+//     return Array(padding + 1).join(" ") + value; //padding에 숫자 1 만큼  빈공간을 만들어(' ') 추가를 한다. + value에 값을 붙처서 리턴한다.
+//   }
+//   if (typeof padding === "string") {
+//     //만약 padding이 string 타입이라면
+//     return padding + value; //padding에 value를 붙여서 리턴한다.
+//   }
+//   throw new Error(`Expected string or number, got '${padding}'.`); //padding이 string이나 number가 아니라면 에러를 발생시킨다.
+// }
+
+// console.log(padLeft("Hello world", 4)); // "    Hello world"
+// console.log(padLeft("Hello world", "!!!")); // "!!!Hello world"
+// console.log(padLeft("Hello world", true)); // Error : Expected string or number, got 'true'.
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//Type Alias (사용자 정의 타입)
+
+// type Hero = {
+//   name: string;
+//   power: number;
+//   height: number;
+//   gender: "남자" | "여자";
+// };
+
+// const hero1: Hero = {
+//   name: "슈퍼맨",
+//   power: 1000,
+//   height: 190,
+//   gender: "남자",
+// };
+
+// const printHero = (hero: Hero) => {
+//   console.log(hero.name, hero.power, hero.height, hero.gender);
+// };
+// //만약 위와 같은 코드가 반복된다면?? 코드가 길어진다면??? 코드의 가독성이 떨어진다면???? 코드의 재사용성이 떨어진다면???? 코드의 유지보수가 어려워진다면???? 코드의 효율성이 떨어진다면????
+// //이런 경우에는 Type Alias를 사용하면 된다. Type Alias는 사용자 정의 타입이다.
+// //Type Alias는 interface와 비슷하다. interface와 Type Alias의 차이점은 interface는 extends를 사용할 수 있고 Type Alias는 extends를 사용할 수 없다.
+
+// printHero(hero1);
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
