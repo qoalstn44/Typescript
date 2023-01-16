@@ -47,3 +47,29 @@
 // str = "abc";
 // let num: any = 123;
 // let any: any = ["a", 2, true];
+
+// //void 함수가 아무것도 리턴하지 않을때 사용
+
+// function c(): void {
+//     console.log("c");
+// }
+
+// //null, undefined (자바스크립트와 같음)
+
+// let a: null = null;
+// let b: undefined = undefined;
+
+// let unionType: number | null = 10;
+
+// //never (함수가 절대 리턴하지 않을때 사용)
+
+// function a(): never { // 함수 a는 무한루프를 돌고있다.
+//   while (true) {
+//     //do something
+//   }
+// }
+// function b(): never { // 함수 b는 에러를 던지고 있다.
+//   throw new Error("error");
+// }
+
+// //object (자바스크립트와 같음)
