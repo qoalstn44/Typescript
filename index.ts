@@ -234,9 +234,69 @@
 // //Type Alias는 interface와 비슷하다. interface와 Type Alias의 차이점은 interface는 extends를 사용할 수 있고 Type Alias는 extends를 사용할 수 없다.
 
 // printHero(hero1);
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+// //Interface  기본 정의
+
+// interface 상세정보 {
+//   name: string;
+//   //   age?: number; //?는 선택적으로 사용할 수 있다는 뜻이다.
+//   age: number;
+// }
+
+// const 사람1: 상세정보 = { name: "민수", age: 27 };
+// const 사람2: 상세정보 = { name: "용현", age: "스물여섯" }; //에러 발생
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+// //선택속성
+
+// interface 상세정보 {
+//   name: string;
+//   age?: number;
+// }
+
+// const 사람1: 상세정보 = { name: "js" };
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//Read only 속성
+
+// interface 상세정보 {
+//     readonly name: string;
+//     age?: number;
+//   }
+
+//   const 사람1: 상세정보 = { name: 'js' };
+//   사람1.name = 'ljs'; // Error
+
+//   let readOnlyArr: ReadonlyArray<number> = [1,2,3];
+//   readOnlyArr.splice(0,1); // error
+//   readOnlyArr.push(4); // error
+//   readOnlyArr[0] = 100; // error
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//index type 속성
+
+// interface 상세정보 {
+//   readonly name: string;
+//   [key: string]: string | number; // key는 string이고 value는 string이거나 number이다.
+//   //key는 string, number만 들어올수있다.
+// }
+
+// const 사람1: 상세정보 = { name: "민수", birthday: "6월24일", age: 27 };
+
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+// //함수 타입
+
+interface 상세정보함수 {
+  (name: string, age: number): string;
+}
+// type Print = (name: string, age: number) => string;
+
+const getNameAndAge: 상세정보함수 = function (name, age) {
+  return `name: ${name}, age: ${age}`;
+};
