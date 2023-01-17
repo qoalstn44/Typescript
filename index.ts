@@ -259,7 +259,7 @@
 
 // const 사람1: 상세정보 = { name: "js" };
 
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+// 2023-01-17ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 //Read only 속성
 
@@ -292,11 +292,74 @@
 
 // //함수 타입
 
-interface 상세정보함수 {
-  (name: string, age: number): string;
-}
-// type Print = (name: string, age: number) => string;
+// interface 상세정보함수 {
+//   (name: string, age: number): string; //함수의 타입을 정의하는 방법
+//   //왼쪽에는 매개변수/(name: string, age: number)/, 오른쪽에는/: string/ 리턴값
+// }
+// // type Print = (name: string, age: number) => string;
 
-const getNameAndAge: 상세정보함수 = function (name, age) {
-  return `name: ${name}, age: ${age}`;
-};
+// const get이름과나이: 상세정보함수 = function (name, age) {
+//   return `name: ${name}, age: ${age}`; //리턴을 했을때 이름에는 string, 나이에는 number가 들어온다.
+// };
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//인터페이스 확장
+
+// interface 상세정보 {
+//     name: string;
+//     age: number;
+//   }
+
+//   interface 한국인 extends 상세정보 { //한국이 상세정보를 상속받는다.
+//     birth: 'KOR';
+//   }
+
+//   interface 한국인 { //위와 동일하다.
+//     name: string;
+//     age: number;
+//     birth: 'KOR';
+//   }
+
+//   interface 개발자 {
+//     job: 'developer';
+//   }
+
+//   interface KorAndDev extends 한국인, 개발자 {}
+
+//   interface KorAndDev {
+//     name: string;
+//     age: number;
+//     birth: 'KOR';
+//     job: 'developer';
+//   }
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+// //intersection Type: 여러 타입을 모두 만족하는 하나의 타입
+
+// interface 상세정보 {
+//   name: string;
+//   age: number;
+// }
+
+// interface 개발자 {
+//   name: string;
+//   skill: string;
+// }
+
+// type 스킬 = 상세정보 & 개발자; //
+
+// const nbcPerson: 스킬 = { //상세정보와 개발자의 타입을 모두 만족해야한다.
+//   name: "a",
+//   age: 20,
+//   skill: "ts",
+// };
+
+// ## **type vs interface**
+
+// 타입 별칭과 인터페이스의 가장 큰 차이점은 타입의 확장 가능 / 불가능 여부입니다.
+
+// 인터페이스는 확장이 가능한데 반해 타입 별칭은 확장이 불가능합니다.
+
+// 따라서, 가능한한 `type` 보다는 +++`interface`로 선언해서 사용하는 것을 추천합니다.+++
